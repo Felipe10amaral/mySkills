@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 export function Home() {
+  const [skill, setNewSkill] = useState();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome, Felipe </Text>
@@ -15,11 +16,12 @@ export function Home() {
         style={styles.input}
         placeholder="New Skills"
         placeholderTextColor="#555"
+        onChangeText={setNewSkill}
       />
       <TouchableOpacity style={styles.button} activeOpacity={0.7}>
         <Text style={styles.buttonText}> Add </Text>
       </TouchableOpacity>
-      <Text style={[styles.title, {marginTop: 20}]}> My Skills </Text>
+      <Text style={[styles.title, {marginTop: 20}]}> {skill} </Text>
     </View>
   );
 }
