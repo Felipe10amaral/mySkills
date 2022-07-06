@@ -17,6 +17,8 @@ export function Home() {
       id: String(new Date().getTime()),
       name: newSkill,
     };
+
+    console.log('objeto', data);
     setMySkills(skill => [...skill, data]);
   }
 
