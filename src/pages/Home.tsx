@@ -13,18 +13,15 @@ export function Home() {
   const [mySkills, setMySkills] = useState<SkillData[]>([]);
 
   function handleAddNewSkill() {
-
     const data = {
       id: String(new Date().getTime()),
       name: newSkill,
-    }
+    };
     setMySkills(skill => [...skill, data]);
-  } 
+  }
 
   function handleRemoveSkill(id: string) {
-    setMySkills( oldState => oldState.filter(
-      skill => skill.id !== id
-    ));
+    setMySkills(oldState => oldState.filter(skill => skill.id !== id));
   }
   return (
     <View style={styles.container}>
@@ -35,13 +32,21 @@ export function Home() {
         placeholderTextColor="#555"
         onChangeText={setNewSkill}
       />
-      <Button onPress={handleAddNewSkill} activeOpacity={0.7} title="Adicionar"/>
+      <Button
+        onPress={handleAddNewSkill}
+        activeOpacity={0.7}
+        title="Adicionar"
+      />
       <Text style={[styles.title, {marginVertical: 50}]}> My Skills </Text>
       <FlatList
         data={mySkills}
         keyExtractor={item => item.id}
-        renderItem={({item}) => <CardSkill skill={item.name}
-        onPress={() => handleRemoveSkill(item.id)} />}
+        renderItem={({item}) => (
+          <CardSkill
+            skill={item.name}
+            onPress={() => handleRemoveSkill(item.id)}
+          />
+        )}
       />
     </View>
   );
